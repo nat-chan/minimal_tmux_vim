@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 " $HOME/powerline からvimの設定を読み込む
 Plug '~/powerline/powerline/bindings/vim'
 set laststatus=2 " ステータスバーを常に表示する
+set showtabline=2 "タブバーを常に表示する
 
 Plug 'tomasr/molokai'
 
