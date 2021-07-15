@@ -1,9 +1,16 @@
 " -*- coding: utf-8 -*-
 set encoding=utf-8 " このvimrcのエンコーディング
+set number
+set cursorline
 
 " plug#begin から plug#end の間で Plug 'repo/name' で指定したものが
 " .vimrcを読み込みなおして :PlugInstall でインストールできる
 call plug#begin('~/.vim/plugged')
+
+" $HOME/powerline からvimの設定を読み込む
+Plug '~/powerline/powerline/bindings/vim'
+set laststatus=2 " ステータスバーを常に表示する
+
 Plug 'tomasr/molokai'
 
 Plug 'jpalardy/vim-slime'
@@ -16,9 +23,10 @@ xmap <C-j> <Plug>SlimeRegionSend
 nmap <C-j> <Plug>SlimeParagraphSend
 let g:slime_target = "tmux"
 " 現在は<prefix>+qで表示されるpane番号が2番のpaneにテキストが送られるように設定されているが、
-" {right-of}を指定して、現在ペインの右側に送る設定や
-" {marked}を指定して<prefix>+mでマークした(枠の色が変わる)ペインに送るように設定を変更できる。
+" {right-of} を指定して、現在ペインの右側に送る設定や
+" {marked} を指定して<prefix>+mでマークした(枠の色が変わる)ペインに送るように設定を変更できる。
 let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
+" ipython向けに ヘッダーを%cpaste -q, フッターを--にする
 let g:slime_python_ipython = 1
 let g:slime_dont_ask_default = 1
 
